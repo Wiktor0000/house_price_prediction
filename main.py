@@ -34,5 +34,34 @@ axes[0].set_xlabel("Liczba pokoi")
 axes[0].set_ylabel("Cena (USD)")
 axes[0].set_title("Wykres rozrzutu dla Price vs Room")
 axes[0].grid(True)
+
+axes[1].scatter(x=housing["area"], y=housing["price_usd"],
+                color="lightcoral", alpha=0.2, edgecolor="k")
+axes[1].set_xlabel("Powierzchnia")
+axes[1].set_ylabel("Cena (USD)")
+axes[1].set_title("Wykres rozrzutu dla Price vs Area")
+axes[1].grid(True)
+plt.tight_layout()
 plt.show()
-print(housing.head())
+
+#2
+parking_counts=housing["parking"].value_counts()
+fig, axes=plt.subplots(1, 2, figsize=(12,6))
+axes[0].bar(["Brak parkingu", "Jest parking"],
+            [parking_counts[0], parking_counts[1]],
+            color=["rosybrown", "sienna"],
+            edgecolor="black")
+axes[0].set_xlabel("Parking")
+axes[0].set_ylabel("Liczba")
+
+
+axes[1].pie(parking_counts,
+            labels=["Brak parkingu", "Jest parking"],
+            colors=["rosybrown", "sienna"],
+            autopct="%1.1f%%",
+            explode=[0.03, 0.03],
+            wedgeprops={"edgecolor":"black", "linewidth": 1})
+fig.suptitle("Wizualizacja 'Zmiennej-Parking' za pomocą wykresu słupkowego i kołowego",
+             fontsize=16, fontweight="bold")
+plt.tight_layout
+plt.show()
