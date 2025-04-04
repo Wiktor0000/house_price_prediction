@@ -54,14 +54,36 @@ axes[0].bar(["Brak parkingu", "Jest parking"],
 axes[0].set_xlabel("Parking")
 axes[0].set_ylabel("Liczba")
 
-
 axes[1].pie(parking_counts,
             labels=["Brak parkingu", "Jest parking"],
             colors=["rosybrown", "sienna"],
             autopct="%1.1f%%",
             explode=[0.03, 0.03],
             wedgeprops={"edgecolor":"black", "linewidth": 1})
+
 fig.suptitle("Wizualizacja 'Zmiennej-Parking' za pomocą wykresu słupkowego i kołowego",
+             fontsize=16, fontweight="bold")
+plt.tight_layout
+plt.show()
+
+#3
+elevator_counts=housing["elevator"].value_counts()
+fig, axes=plt.subplots(1, 2, figsize=(12, 6))
+bars=axes[0].bar(["Brak windy", "Jest winda"],
+            [elevator_counts[0], elevator_counts[1]],
+            color=["rosybrown", "sienna"],
+            edgecolor="black")
+axes[0].set_xlabel("Liczba")
+axes[0].set_ylabel("Winda")
+axes[0].bar_label(bars, fmt='%d', fontsize=12, fontweight='bold')
+
+axes[1].pie(parking_counts,
+            labels=["Brak windy", "Jest Winda"],
+            colors=["rosybrown", "sienna"],
+            autopct="%1.1f%%",
+            explode=[0.03, 0.03],
+            wedgeprops={"edgecolor":"black", "linewidth": 1})
+fig.suptitle("Wizualizacja 'Zmiennej-Elevator' za pomocą wykresu słupkowego i kołowego",
              fontsize=16, fontweight="bold")
 plt.tight_layout
 plt.show()
